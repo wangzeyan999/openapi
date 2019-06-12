@@ -4,39 +4,65 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
+	
 	<!-- <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent> -->
-    
-	<groupId>com.bizvane.openapi</groupId>
-	<artifactId>openapi-client-sdk</artifactId>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>9</version>
+	</parent> -->
+
+	<groupId>cn.bizvane.openapi</groupId>
+	<artifactId>bizvane-java-sdk-openapi</artifactId>
 	<name>openapi-client-sdk</name>
 	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
 	<version>1.0.0-SNAPSHOT</version>
-	
+
+
+
 	<licenses>
 		<license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
 	</licenses>
-	
+
+	<scm>
+		<url>http://bizvan.cn</url>
+		<connection>scm:git:https://github.com/wangzeyan999/openapi.git</connection>
+		<developerConnection>scm:git:https://github.com/wangzeyan999/openapi.git</developerConnection>
+	</scm>
+
 	<developers>
-        <developer>
-            <name>wang.zeyan</name>
-            <email>wangzeyan@bizvane.com</email>
-            <organization>Bizvane</organization>
-        </developer>
-    </developers>
+		<developer>
+			<name>wang.zeyan</name>
+			<email>wangzeyan@bizvane.com</email>
+			<organization>Bizvane</organization>
+			<organizationUrl>http://www.bizvane.com</organizationUrl>
+		</developer>
+	</developers>
+
+	<distributionManagement>
+		<!-- <snapshotRepository>
+			<id>snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository> -->
+		<snapshotRepository>
+			<id>julu-snapshots</id>
+			<url>http://repo.bizvane.com/nexus/content/repositories/julu-snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+		</repository>
+	</distributionManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<fastjson.version>1.2.56</fastjson.version>
 		<java.version>1.8</java.version>
+		<commons-codec.version>1.12</commons-codec.version>
 	</properties>
 
 	<dependencies>
@@ -55,7 +81,36 @@
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
-			<version>1.12</version>
+			<version>${commons-codec.version}</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<!-- <finalName>bizvane-java-sdk-openapi-${project.version}</finalName> -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.8</version>
+				<configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

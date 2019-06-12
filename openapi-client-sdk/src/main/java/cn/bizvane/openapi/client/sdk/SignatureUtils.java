@@ -1,4 +1,4 @@
-package com.bizvane.openapi.client.sdk;
+package cn.bizvane.openapi.client.sdk;
 
 import java.util.Base64.Encoder;
 import java.util.HashMap;
@@ -11,7 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
-import com.bizvane.openapi.client.sdk.consts.StringConsts;
+
+import cn.bizvane.openapi.client.sdk.consts.StringConsts;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package com.bizvane.openapi.client.sdk.consts;
+package cn.bizvane.openapi.client.sdk.consts;
 
 /**
  * 
