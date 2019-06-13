@@ -4,12 +4,9 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	
-	<!-- <parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>9</version>
-	</parent> -->
+
+	<!-- <parent> <groupId>org.sonatype.oss</groupId> <artifactId>oss-parent</artifactId> 
+		<version>9</version> </parent> -->
 
 	<groupId>cn.bizvane.openapi</groupId>
 	<artifactId>bizvane-java-sdk-openapi</artifactId>
@@ -17,8 +14,7 @@
 	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
 	<version>1.0.0-SNAPSHOT</version>
-
-
+	<description>Bizvane Openapi Client SDK</description>
 
 	<licenses>
 		<license>
@@ -44,13 +40,9 @@
 	</developers>
 
 	<distributionManagement>
-		<!-- <snapshotRepository>
+		<snapshotRepository>
 			<id>snapshots</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository> -->
-		<snapshotRepository>
-			<id>julu-snapshots</id>
-			<url>http://repo.bizvane.com/nexus/content/repositories/julu-snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>ossrh</id>
@@ -60,8 +52,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<fastjson.version>1.2.56</fastjson.version>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<fastjson.version>1.2.56</fastjson.version>
 		<commons-codec.version>1.12</commons-codec.version>
 	</properties>
 
@@ -86,7 +82,6 @@
 	</dependencies>
 
 	<build>
-		<!-- <finalName>bizvane-java-sdk-openapi-${project.version}</finalName> -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -102,14 +97,18 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.8</version>
-				<configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

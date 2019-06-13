@@ -17,7 +17,7 @@ import cn.bizvane.openapi.client.sdk.consts.StringConsts;
 /**
  * 
  * @author wang.zeyan
- * @date 2019年4月15日
+ * 2019年4月15日
  */
 public class SignatureUtils {
 	
@@ -27,11 +27,11 @@ public class SignatureUtils {
 	static final String DEFAULT_JOIN2 = "&";
 	static final String EMPTY = "";
 	static final Encoder ENCODER = java.util.Base64.getEncoder();
+	
 	/**
 	 * 签名
-	 * @param appSecret
-	 * @param rawData
-	 * @return
+	 * @param rawData 原始数据
+	 * @return 签名值
 	 */
 	public static String sign(String rawData) throws IllegalArgumentException {
 		if(rawData == null || rawData.trim().length() == 0) {
@@ -44,9 +44,9 @@ public class SignatureUtils {
 	
 	/**
 	 * 签名
-	 * @param appSecret
-	 * @param map
-	 * @return
+	 * @param appSecret  appSecret
+	 * @param map HashMap
+	 * @return 签名值
 	 */
 	public static String sign(String appSecret, Map<String, Object> map) throws IllegalArgumentException {
 		if(map == null || map.size() == 0) {
@@ -63,9 +63,9 @@ public class SignatureUtils {
 	
 	/**
 	 * 签名
-	 * @param appSecret
-	 * @param rawData
-	 * @return
+	 * @param appSecret appSecret
+	 * @param treeMap TreeMap
+	 * @return 签名值
 	 */
 	public static String sign(String appSecret, TreeMap<String, Object> treeMap) throws IllegalArgumentException {
 		if(treeMap == null || treeMap.size() == 0) {
@@ -82,10 +82,9 @@ public class SignatureUtils {
 	
 	/**
 	 * 验证签名
-	 * @param appSecret
-	 * @param rawData
-	 * @param sign
-	 * @return
+	 * @param rawData 原始数据
+	 * @param sign	签名值
+	 * @return boolean验证签名结果
 	 */
 	public static boolean verifySign(String rawData, String sign) throws IllegalArgumentException {
 		if(logger.isDebugEnabled()) {
@@ -103,10 +102,10 @@ public class SignatureUtils {
 	
 	/**
 	 * 验证签名
-	 * @param appSecret
-	 * @param map
-	 * @param sign
-	 * @return
+	 * @param appSecret  appsecret
+	 * @param map  HashMap
+	 * @param sign 签名值
+	 * @return boolean验证签名结果
 	 */
 	public static boolean verifySign(String appSecret, Map<String, Object> map, String sign) throws IllegalArgumentException {
 		if(map == null || map.size() == 0) {
@@ -123,10 +122,10 @@ public class SignatureUtils {
 	
 	/**
 	 * 验证签名
-	 * @param appSecret
-	 * @param treeMap
-	 * @param sign
-	 * @return
+	 * @param appSecret appSecret
+	 * @param treeMap TreeMap
+	 * @param sign 签名值
+	 * @return boolean验证签名结果
 	 */
 	public static boolean verifySign(String appSecret, TreeMap<String, Object> treeMap, String sign) throws IllegalArgumentException {
 		if(treeMap == null || treeMap.size() == 0) {
@@ -163,10 +162,10 @@ public class SignatureUtils {
 	
 	/**
 	 * 验证签名
-	 * @param headers
-	 * @param body
-	 * @param appSecret
-	 * @return
+	 * @param headers RequestHeaders
+	 * @param body Map, RequestBody
+	 * @param appSecret appSecret 
+	 * @return boolean验证签名结果
 	 */
 	public static boolean verySignature(Map<String, Object> headers, Map<String, Object> body, String appSecret) {
 		Object object = headers.get(StringConsts.SIGNATURE_HEADERS);

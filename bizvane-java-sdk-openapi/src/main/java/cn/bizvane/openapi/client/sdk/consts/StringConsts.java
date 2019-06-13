@@ -3,7 +3,7 @@ package cn.bizvane.openapi.client.sdk.consts;
 /**
  * 
  * @author wang.zeyan
- * @date 2019年6月10日
+ * 2019年6月10日
  */
 public interface StringConsts {
 	
