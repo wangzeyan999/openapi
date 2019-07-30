@@ -10,7 +10,7 @@
 	<name>openapi-client-sdk</name>
 	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<description>Bizvane Openapi Client SDK</description>
 
 	<licenses>
@@ -38,7 +38,7 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>snapshots</id>
+			<id>ossrh-snapshot</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 		<repository>

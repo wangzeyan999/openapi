@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 
 import cn.bizvane.openapi.client.sdk.consts.StringConsts;
 
@@ -154,7 +155,7 @@ public class SignatureUtils {
 			if(entry.getValue() instanceof String) {
 				stringBuilder.append(String.valueOf(entry.getValue()));
 			}else {
-				stringBuilder.append(JSON.toJSONString(entry.getValue()));
+				stringBuilder.append(JSON.toJSONString(entry.getValue(), SerializerFeature.MapSortField));
 			}
 		}
 		return stringBuilder.toString();
